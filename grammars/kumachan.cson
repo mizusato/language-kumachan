@@ -63,15 +63,40 @@
   }
   {
     'name': 'constant.numeric.k'
-    'match': '(\\.\\d+([Ee][\-\+]\\d+)?i?)\\b'
+    'match': '\\b(\\d+)\\b'
   }
   {
     'name': 'constant.numeric.k'
-    'match': '\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?i?\\b)?'
+    'match': '(\\.\\d+([Ee][\-\+]\\d+)?)\\b'
+  }
+  {
+    'name': 'constant.numeric.k'
+    'match': '\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?\\b)?'
   }
   {
     'name': 'constant.numeric.k'
     'match': '\\b(0x[0-9a-fA-F]+)\\b'
+  }
+  {
+    'comment': 'lambda definition syntax'
+    'match': '\\b(lambda)[\\t ]*\\('
+    'captures':
+      '1':
+        'name': 'keyword.function.k'
+  }
+  {
+    'comment': 'function call/definition syntax'
+    'match': '\\b([^\\(\\)\\{\\}\\[\\]<>\\- \\t]+)[\\t ]*\\('
+    'captures':
+      '1':
+        'name': 'entity.name.function'
+  }
+  {
+    'comment': 'method call syntax (without parentheses)'
+    'match': '\\b\\->\\s*([^\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s*\\->'
+    'captures':
+      '1':
+        'name': 'entity.name.function'
   }
   {
     'name': 'keyword.root.k'
@@ -79,7 +104,7 @@
   }
   {
     'name': 'keyword.control.k'
-    'match': '\\b(if|else|elif|switch|case|default|while|for|in|break|continue|return|yield|await)\\b'
+    'match': '\\b(if|else|elif|switch|otherwise|while|for|in|break|continue|return|yield|await)\\b'
   }
   {
     'name': 'keyword.scope.k'
@@ -95,14 +120,14 @@
   }
   {
     'name': 'keyword.misc.k'
-    'match': '\\b(where|when|otherwise|tree|struct|fields|config|operator|guard|one|of|enum)\\b'
+    'match': '\\b(where|when|match|tree|struct|fields|config|operator|guard|one|of|enum)\\b'
   }
   {
     'name': 'keyword.oo.k'
     'match': '\\b(class|init|create|private|data|interface)\\b'
   }
   {
-    'name': 'keyword.operator.k',
+    'name': 'keyword.operators.k',
     'match': '\\b(str|len|copy|negate|prms|iter|obsv|async_iter|mount|push|is|or|not)\\b'
   }
   {
