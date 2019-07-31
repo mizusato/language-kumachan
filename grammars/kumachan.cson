@@ -78,6 +78,16 @@
     'match': '\\b(0x[0-9a-fA-F]+)\\b'
   }
   {
+    'name': 'keyword.named.op.k'
+    'match': '\\b(str|len|copy|negate|prms|iter|obsv|async_iter|mount|push|is|or|not)\\b'
+  }
+  {
+    'match': '\\b(init|create)\\s+\\('
+    'captures':
+      '1':
+        'name': 'keyword.oo.k'
+  }
+  {
     'comment': 'lambda definition syntax'
     'match': '\\b(lambda)[\\t ]*\\('
     'captures':
@@ -85,26 +95,91 @@
         'name': 'keyword.function.k'
   }
   {
+    'name': 'keyword.control.k'
+    'match': '\\b(if|else|elif|switch|otherwise|while|for|in|break|continue|return|yield|await)\\b'
+  }
+  {
     'comment': 'function call/definition syntax'
-    'match': '\\b([^\\(\\)\\{\\}\\[\\]<>\\- \\t]+)[\\t ]*\\('
+    'match': '\\b([^:,\\(\\)\\{\\}\\[\\]<>\\- \\n\\t]+)[\\t ]*\\('
     'captures':
       '1':
         'name': 'entity.name.function'
   }
   {
-    'comment': 'method call syntax (without parentheses)'
-    'match': '\\b\\->\\s*([^\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s*\\->'
+    'comment': 'method call syntax (without parentheses, intermediate)'
+    'match': '\\->\\s*([^:,\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s*\\->'
     'captures':
       '1':
         'name': 'entity.name.function'
+  }
+  {
+    'comment': 'method call syntax (without parentheses, terminal)'
+    'match': '\\->\\s*([^:,\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s+(?!\\{)'
+    'captures':
+      '1':
+        'name': 'entity.name.function'
+  }
+  {
+    'match': '(ensure)\\s+([^\\(\\{\\s]+)\\s*(?:\\{|\\()'
+    'captures':
+      '1':
+        'name': 'keyword.error.k'
+      '2':
+        'name': 'entity.name.tag'
+  }
+  {
+    'match': '(unless)\\s+([^\\(\\{\\s]+)\\s*(?:\\{|\\()'
+    'captures':
+      '1':
+        'name': 'keyword.error.k'
+      '2':
+        'name': 'entity.name.tag'
+  }
+  {
+    'match': '(try)\\s+(to)\\s+([^\\{\\s]+)\\s*\\{'
+    'captures':
+      '1':
+        'name': 'keyword.error.k'
+      '2':
+        'name': 'keyword.error.k'
+      '3':
+        'name': 'entity.name.tag'
+  }
+  {
+    'match': '(failed)\\s+(to)\\s+([^\\{\\s]+)\\s*\\{'
+    'captures':
+      '1':
+        'name': 'keyword.error.k'
+      '2':
+        'name': 'keyword.error.k'
+      '3':
+        'name': 'entity.name.tag'
+  }
+  {
+    'match': '(try)\\s+([^\\{\\s]+)\\s*\\{'
+    'captures':
+      '1':
+        'name': 'keyword.error.k'
+      '2':
+        'name': 'entity.name.tag'
+  }
+  {
+    'match': '(failed)\\s+([^\\{\\s]+)\\s*\\{'
+    'captures':
+      '1':
+        'name': 'keyword.error.k'
+      '2':
+        'name': 'entity.name.tag'
+  }
+  {
+    'match': '(data)\\s+\\{'
+    'captures':
+      '1':
+        'name': 'keyword.oo.k'
   }
   {
     'name': 'keyword.root.k'
     'match': '\\b(module|export|include|import|from|as)\\b'
-  }
-  {
-    'name': 'keyword.control.k'
-    'match': '\\b(if|else|elif|switch|otherwise|while|for|in|break|continue|return|yield|await)\\b'
   }
   {
     'name': 'keyword.scope.k'
@@ -116,7 +191,7 @@
   }
   {
     'name': 'keyword.error.k'
-    'match': '\\b(throw|assert|ensure|try|to|unless|failed|finally|panic)\\b'
+    'match': '\\b(throw|assert|finally|panic)\\b'
   }
   {
     'name': 'keyword.misc.k'
@@ -124,11 +199,11 @@
   }
   {
     'name': 'keyword.oo.k'
-    'match': '\\b(class|init|create|private|data|interface)\\b'
+    'match': '\\b(class|private|interface)\\b'
   }
   {
-    'name': 'keyword.operators.k',
-    'match': '\\b(str|len|copy|negate|prms|iter|obsv|async_iter|mount|push|is|or|not)\\b'
+    'name': 'keyword.operator.k',
+    'match': '\\b(\\->|-->)\\b'
   }
   {
     'name': 'constant.language.k'
