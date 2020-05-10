@@ -13,6 +13,6 @@
     "atom": "*"
   },
   "dependencies": {
-    "tree-sitter-kumachan": "^0.0.2"
+    "tree-sitter-kumachan": "0.0.x"
   }
 }
