@@ -4,11 +4,15 @@
   "description": "KumaChan Language Support (Experimental)",
   "keywords": [
     "language",
-    "grammar"
+    "grammar",
+    "tree-sitter"
   ],
   "repository": "https://github.com/mizusato/language-kumachan",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": "*"
+  },
+  "dependencies": {
+    "tree-sitter-kumachan": "^0.0.2"
   }
 }
