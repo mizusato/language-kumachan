@@ -33,24 +33,54 @@
     "if",
     "elif",
     "else",
-    "lambda",
     "let",
     "rec",
     "|",
-    "."
+    ".",
+    ";",
+    ":",
+    ":="
   ''': 'keyword.control'
+  '"(", ")", "[", "]", "{", "}"': 'entity.name.tag'
   'comment': 'comment.block'
-  'decl_const > name': 'constant.other'
+  'string_text': 'string.quoted.single'
+  'formatter_text': 'string.quoted.double'
   'int': 'constant.numeric'
   'float': 'constant.numeric'
   'char': 'constant.character'
-  'string_text': 'string.quoted.single'
-  'formatter_text': 'string.quoted.double'
+  'decl_const > name': 'constant.other'
   'decl_func > name': 'entity.name.function'
-  'infix > operator': 'keyword.operator'
+  'decl_macro > name': 'entity.name.function'
+  'decl_type > name': 'entity.name.type'
+  'infix > operator': 'entity.name.function'
+  'infix > "$"': 'entity.name.tag'
+  'type_ref > name': 'entity.name.type'
+  'type_ref > module_prefix': 'entity.name.type'
+  'type_params > name': 'entity.name.type'
+  'pipeline > pipe_func': 'entity.name.function'
+  'callee > term > inline_ref > name': 'entity.name.function'
+  'callee > term > inline_ref > module_prefix': 'entity.name.function'
+  'lambda_header': 'entity.name.tag'
+  'pattern_trivial > name': 'variable.parameter'
+  'pattern_tuple > name': 'variable.parameter'
+  'pattern_bundle > name': 'variable.parameter'
+  'field > name': 'entity.name.tag'
+  'pair > name': 'entity.name.tag'
 'folds': [
   {
     'type': 'comment'
+  }
+  {
+    'type': 'decl_type'
+  }
+  {
+    'type': 'decl_const'
+  }
+  {
+    'type': 'decl_func'
+  }
+  {
+    'type': 'decl_macro'
   }
   {
     'type': 'multi_switch'
