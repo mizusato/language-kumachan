@@ -41,7 +41,7 @@
     ":",
     ":="
   ''': 'keyword.control'
-  '"(", ")", "[", "]", "{", "}"': 'entity.name.tag'
+  '"(", ")", "[", "]"': 'entity.name.tag'
   'comment': 'comment.block'
   'string_text': 'string.quoted.single'
   'formatter_text': 'string.quoted.double'
