@@ -1,7 +1,10 @@
 # If you want some example snippets, check out:
-# https://github.com/atom/language-javascript/blob/master/snippets/javascript.cson
+# https://github.com/atom/language-javascript/blob/master/snippets/language-javascript.cson
 
-#'.source.kumachan':
-#  'Method documentation':
-#    'prefix': 'doc'
-#    'body': '@@ ${1:method} - ${2:description}'
+'.source.kumachan':
+  'public function':
+    'prefix': 'puf'
+    'body': 'public function ${1:name}: ( &${2:input} ${3:output} )\n\t${4:body};'
+  'private function':
+    'prefix': 'prf'
+    'body': 'private function ${1:name}: ( &${2:input} ${3:output} )\n\t${4:body};'

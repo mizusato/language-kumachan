@@ -5,7 +5,7 @@
 'name': 'KumaChan'
 'comment': 'KumaChan language'
 'fileTypes': [
-  'k'
+  'km'
 ]
 'foldingStartMarker': '({|\\()\\s*$'
 'foldingStopMarker': '(}|\\))\\s*$'
@@ -14,200 +14,116 @@
     'begin': '/\\*'
     'captures':
       '0':
-        'name': 'punctuation.definition.comment.k'
+        'name': 'punctuation.definition.comment.km'
     'end': '\\*/'
-    'name': 'comment.block.k'
+    'name': 'comment.block.km'
   }
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.comment.k'
+        'name': 'punctuation.definition.comment.km'
     'match': '(//).*$\\n?'
-    'name': 'comment.line.double-slash.k'
+    'name': 'comment.line.double-slash.km'
   }
   {
-    'comment': 'triple quoted string literal'
-    'begin': '\'\'\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.k'
-    'end': '\'\'\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.k'
-    'name': 'string.quoted.triple.k'
+    'name': 'constant.numeric.km'
+    'match': '\\^["\']'
   }
   {
     'comment': 'double quoted string literal'
     'begin': '"'
     'beginCaptures':
       '0':
-        'name': 'punctuation.definition.string.begin.k'
+        'name': 'punctuation.definition.string.begin.km'
     'end': '"'
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.string.end.k'
-    'name': 'string.quoted.double.k'
+        'name': 'punctuation.definition.string.end.km'
+    'name': 'string.quoted.double.km'
   }
   {
     'comment': 'single quoted string literal'
     'begin': '\''
     'beginCaptures':
       '0':
-        'name': 'punctuation.definition.string.begin.k'
+        'name': 'punctuation.definition.string.begin.km'
     'end': '\''
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.string.end.k'
-    'name': 'string.quoted.single.k'
+        'name': 'punctuation.definition.string.end.km'
+    'name': 'string.quoted.single.km'
   }
   {
-    'name': 'constant.numeric.k'
+    'name': 'constant.numeric.km'
+    'match': '\\^.'
+  }
+  {
+    'name': 'constant.numeric.km'
     'match': '\\b(\\d+)\\b'
   }
   {
-    'name': 'constant.numeric.k'
+    'name': 'constant.numeric.km'
     'match': '(\\.\\d+([Ee][\-\+]\\d+)?)\\b'
   }
   {
-    'name': 'constant.numeric.k'
+    'name': 'constant.numeric.km'
     'match': '\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?\\b)?'
   }
   {
-    'name': 'constant.numeric.k'
+    'name': 'constant.numeric.km'
     'match': '\\b(0x[0-9a-fA-F]+)\\b'
   }
   {
-    'name': 'keyword.named.op.k'
-    'match': '\\b(str|len|copy|negate|prms|iter|obsv|async_iter|mount|push|is|or|not)\\b'
-  }
-  {
-    'match': '\\b(init|create)\\s+\\('
+    'comment': 'pipeline call'
+    'match': '(\\|)\\s*([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)'
     'captures':
       '1':
-        'name': 'keyword.oo.k'
-  }
-  {
-    'comment': 'lambda definition syntax'
-    'match': '\\b(lambda)[\\t ]*\\('
-    'captures':
-      '1':
-        'name': 'keyword.function.k'
-  }
-  {
-    'name': 'keyword.control.k'
-    'match': '\\b(if|else|elif|switch|otherwise|while|for|in|break|continue|return|yield|await)\\b'
-  }
-  {
-    'comment': 'function call/definition syntax'
-    'match': '\\b([^:,\\(\\)\\{\\}\\[\\]<>\\- \\n\\t]+)[\\t ]*\\('
-    'captures':
-      '1':
+        'name': 'keyword.control.km'
+      '2':
         'name': 'entity.name.function'
   }
   {
-    'comment': 'method call syntax (without parentheses, intermediate)'
-    'match': '\\->\\s*([^:,\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s*\\->'
+    'comment': 'function definition'
+    'match': '\\b(function)\\s+([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)[^\\:]*\\:'
     'captures':
       '1':
+        'name': 'keyword.control.km'
+      '2':
         'name': 'entity.name.function'
   }
   {
-    'comment': 'method call syntax (without parentheses, terminal)'
-    'match': '\\->\\s*([^:,\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s+(?!\\{)'
+    'comment': 'macro definition'
+    'match': '\\b(macro)\\s+([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)'
     'captures':
       '1':
+        'name': 'keyword.control.km'
+      '2':
         'name': 'entity.name.function'
   }
   {
-    'match': '(ensure)\\s+([^\\(\\{\\s]+)\\s*(?:\\{|\\()'
+    'comment': 'constant definition'
+    'match': '\\b(const)\\s+([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)\\s*:'
     'captures':
       '1':
-        'name': 'keyword.error.k'
+        'name': 'keyword.control.km'
       '2':
-        'name': 'entity.name.tag'
+        'name': 'constant.language.km'
   }
   {
-    'match': '(unless)\\s+([^\\(\\{\\s]+)\\s*(?:\\{|\\()'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
+    'name': 'constant.language.km'
+    'match': '\\b(Yes|No|Just|N/A|OK|NG)\\b'
   }
   {
-    'match': '(try)\\s+(to)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'keyword.error.k'
-      '3':
-        'name': 'entity.name.tag'
+    'name': 'keyword.control.km'
+    'match': '\\b(import|from|type|union|native|as|protected|opaque|private|public|function|const|macro|do|if|elif|else|switch\\*|switch|end|case|default|lambda|let|rec)\\b'
   }
   {
-    'match': '(failed)\\s+(to)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'keyword.error.k'
-      '3':
-        'name': 'entity.name.tag'
+    'name': 'keyword.control.km'
+    'match': ':=|~|\\|'
   }
   {
-    'match': '(try)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(failed)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(data)\\s+\\{'
-    'captures':
-      '1':
-        'name': 'keyword.oo.k'
-  }
-  {
-    'name': 'keyword.root.k'
-    'match': '\\b(module|export|include|import|from|as)\\b'
-  }
-  {
-    'name': 'keyword.scope.k'
-    'match': '\\b(let|type|singleton|var|reset|set|do|nothing)\\b'
-  }
-  {
-    'name': 'keyword.function.k'
-    'match': '\\b(function|async|lambda|invoke|iterator|promise|observer|static|mock|handle)\\b'
-  }
-  {
-    'name': 'keyword.error.k'
-    'match': '\\b(throw|assert|finally|panic)\\b'
-  }
-  {
-    'name': 'keyword.misc.k'
-    'match': '\\b(where|when|match|tree|struct|fields|config|operator|guard|one|of|enum)\\b'
-  }
-  {
-    'name': 'keyword.oo.k'
-    'match': '\\b(class|private|interface)\\b'
-  }
-  {
-    'name': 'keyword.operator.k',
-    'match': '\\b(\\->|-->)\\b'
-  }
-  {
-    'name': 'constant.language.k'
-    'match': '\\b(true|false|Void|Nil|NotFound)\\b'
+    'name': 'entity.name.tag'
+    'match': '(\\&|\\$|\\(|\\))'
   }
   {
     'match': ','
@@ -220,5 +136,5 @@
   {
     'match': ':'
     'name': 'punctuation.other.colon.go'
-  }
+  },
 ]
