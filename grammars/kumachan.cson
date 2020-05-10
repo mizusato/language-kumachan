@@ -4,137 +4,64 @@
 'scopeName': 'source.kumachan'
 'name': 'KumaChan'
 'comment': 'KumaChan language'
+'type': 'tree-sitter'
+'parser': 'tree-sitter-kumachan'
 'fileTypes': [
   'km'
 ]
-'foldingStartMarker': '({|\\()\\s*$'
-'foldingStopMarker': '(}|\\))\\s*$'
-'patterns': [
+'scopes':
+  '''
+    "import",
+    "from",
+    "type",
+    "union",
+    "native",
+    "as",
+    "protected",
+    "opaque",
+    "private",
+    "public",
+    "function",
+    "const",
+    "macro",
+    "do",
+    "switch*",
+    "switch",
+    "case",
+    "default",
+    "end",
+    "if",
+    "elif",
+    "else",
+    "lambda",
+    "let",
+    "rec",
+    "|",
+    "."
+  ''': 'keyword.control'
+  'comment': 'comment.block'
+  'decl_const > name': 'constant.other'
+  'int': 'constant.numeric'
+  'float': 'constant.numeric'
+  'char': 'constant.character'
+  'string_text': 'string.quoted.single'
+  'formatter_text': 'string.quoted.double'
+  'decl_func > name': 'entity.name.function'
+  'infix > operator': 'keyword.operator'
+'folds': [
   {
-    'begin': '/\\*'
-    'captures':
-      '0':
-        'name': 'punctuation.definition.comment.km'
-    'end': '\\*/'
-    'name': 'comment.block.km'
+    'type': 'comment'
   }
   {
-    'captures':
-      '1':
-        'name': 'punctuation.definition.comment.km'
-    'match': '(//).*$\\n?'
-    'name': 'comment.line.double-slash.km'
+    'type': 'multi_switch'
   }
   {
-    'name': 'constant.numeric.km'
-    'match': '\\^["\']'
+    'type': 'switch'
   }
   {
-    'comment': 'double quoted string literal'
-    'begin': '"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.km'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.km'
-    'name': 'string.quoted.double.km'
+    'type': 'if'
   }
   {
-    'comment': 'single quoted string literal'
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.km'
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.km'
-    'name': 'string.quoted.single.km'
+    'type': 'block'
   }
-  {
-    'name': 'constant.numeric.km'
-    'match': '\\^.'
-  }
-  {
-    'name': 'constant.numeric.km'
-    'match': '\\b(\\d+)\\b'
-  }
-  {
-    'name': 'constant.numeric.km'
-    'match': '(\\.\\d+([Ee][\-\+]\\d+)?)\\b'
-  }
-  {
-    'name': 'constant.numeric.km'
-    'match': '\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?\\b)?'
-  }
-  {
-    'name': 'constant.numeric.km'
-    'match': '\\b(0x[0-9a-fA-F]+)\\b'
-  }
-  {
-    'comment': 'pipeline call'
-    'match': '(\\|)\\s*([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)'
-    'captures':
-      '1':
-        'name': 'keyword.control.km'
-      '2':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'function definition'
-    'match': '\\b(function)\\s+([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)[^\\:]*\\:'
-    'captures':
-      '1':
-        'name': 'keyword.control.km'
-      '2':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'macro definition'
-    'match': '\\b(macro)\\s+([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)'
-    'captures':
-      '1':
-        'name': 'keyword.control.km'
-      '2':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'constant definition'
-    'match': '\\b(const)\\s+([^;:,\\$\\#\\@\\&"\'\\(\\)\\{\\}\\[\\]\\s]+)\\s*:'
-    'captures':
-      '1':
-        'name': 'keyword.control.km'
-      '2':
-        'name': 'constant.language.km'
-  }
-  {
-    'name': 'constant.language.km'
-    'match': '\\b(Yes|No|Just|N/A|OK|NG)\\b'
-  }
-  {
-    'name': 'keyword.control.km'
-    'match': '\\b(import|from|type|union|native|as|protected|opaque|private|public|function|const|macro|do|if|elif|else|switch\\*|switch|end|case|default|lambda|let|rec)\\b'
-  }
-  {
-    'name': 'keyword.control.km'
-    'match': ':=|~|\\|'
-  }
-  {
-    'name': 'entity.name.tag'
-    'match': '(\\&|\\$|\\(|\\))'
-  }
-  {
-    'match': ','
-    'name': 'punctuation.other.comma.go'
-  }
-  {
-    'match': '\\.(?![\\{\\[])'
-    'name': 'punctuation.other.period.go'
-  }
-  {
-    'match': ':'
-    'name': 'punctuation.other.colon.go'
-  },
 ]
