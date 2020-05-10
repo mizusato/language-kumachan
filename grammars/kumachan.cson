@@ -4,221 +4,64 @@
 'scopeName': 'source.kumachan'
 'name': 'KumaChan'
 'comment': 'KumaChan language'
+'type': 'tree-sitter'
+'parser': 'tree-sitter-kumachan'
 'fileTypes': [
-  'k'
+  'km'
 ]
-'foldingStartMarker': '({|\\()\\s*$'
-'foldingStopMarker': '(}|\\))\\s*$'
-'patterns': [
+'scopes':
+  '''
+    "import",
+    "from",
+    "type",
+    "union",
+    "native",
+    "as",
+    "protected",
+    "opaque",
+    "private",
+    "public",
+    "function",
+    "const",
+    "macro",
+    "do",
+    "switch*",
+    "switch",
+    "case",
+    "default",
+    "end",
+    "if",
+    "elif",
+    "else",
+    "lambda",
+    "let",
+    "rec",
+    "|",
+    "."
+  ''': 'keyword.control'
+  'comment': 'comment.block'
+  'decl_const > name': 'constant.other'
+  'int': 'constant.numeric'
+  'float': 'constant.numeric'
+  'char': 'constant.character'
+  'string_text': 'string.quoted.single'
+  'formatter_text': 'string.quoted.double'
+  'decl_func > name': 'entity.name.function'
+  'infix > operator': 'keyword.operator'
+'folds': [
   {
-    'begin': '/\\*'
-    'captures':
-      '0':
-        'name': 'punctuation.definition.comment.k'
-    'end': '\\*/'
-    'name': 'comment.block.k'
+    'type': 'comment'
   }
   {
-    'captures':
-      '1':
-        'name': 'punctuation.definition.comment.k'
-    'match': '(//).*$\\n?'
-    'name': 'comment.line.double-slash.k'
+    'type': 'multi_switch'
   }
   {
-    'comment': 'triple quoted string literal'
-    'begin': '\'\'\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.k'
-    'end': '\'\'\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.k'
-    'name': 'string.quoted.triple.k'
+    'type': 'switch'
   }
   {
-    'comment': 'double quoted string literal'
-    'begin': '"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.k'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.k'
-    'name': 'string.quoted.double.k'
+    'type': 'if'
   }
   {
-    'comment': 'single quoted string literal'
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.k'
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.k'
-    'name': 'string.quoted.single.k'
-  }
-  {
-    'name': 'constant.numeric.k'
-    'match': '\\b(\\d+)\\b'
-  }
-  {
-    'name': 'constant.numeric.k'
-    'match': '(\\.\\d+([Ee][\-\+]\\d+)?)\\b'
-  }
-  {
-    'name': 'constant.numeric.k'
-    'match': '\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?\\b)?'
-  }
-  {
-    'name': 'constant.numeric.k'
-    'match': '\\b(0x[0-9a-fA-F]+)\\b'
-  }
-  {
-    'name': 'keyword.named.op.k'
-    'match': '\\b(str|len|copy|negate|prms|iter|obsv|async_iter|mount|push|is|or|not)\\b'
-  }
-  {
-    'match': '\\b(init|create)\\s+\\('
-    'captures':
-      '1':
-        'name': 'keyword.oo.k'
-  }
-  {
-    'comment': 'lambda definition syntax'
-    'match': '\\b(lambda)[\\t ]*\\('
-    'captures':
-      '1':
-        'name': 'keyword.function.k'
-  }
-  {
-    'name': 'keyword.control.k'
-    'match': '\\b(if|else|elif|switch|otherwise|while|for|in|break|continue|return|yield|await)\\b'
-  }
-  {
-    'comment': 'function call/definition syntax'
-    'match': '\\b([^:,\\(\\)\\{\\}\\[\\]<>\\- \\n\\t]+)[\\t ]*\\('
-    'captures':
-      '1':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'method call syntax (without parentheses, intermediate)'
-    'match': '\\->\\s*([^:,\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s*\\->'
-    'captures':
-      '1':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'method call syntax (without parentheses, terminal)'
-    'match': '\\->\\s*([^:,\\(\\)\\{\\}\\[\\]<>\\-\\s]+)\\s+(?!\\{)'
-    'captures':
-      '1':
-        'name': 'entity.name.function'
-  }
-  {
-    'match': '(ensure)\\s+([^\\(\\{\\s]+)\\s*(?:\\{|\\()'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(unless)\\s+([^\\(\\{\\s]+)\\s*(?:\\{|\\()'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(try)\\s+(to)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'keyword.error.k'
-      '3':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(failed)\\s+(to)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'keyword.error.k'
-      '3':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(try)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(failed)\\s+([^\\{\\s]+)\\s*\\{'
-    'captures':
-      '1':
-        'name': 'keyword.error.k'
-      '2':
-        'name': 'entity.name.tag'
-  }
-  {
-    'match': '(data)\\s+\\{'
-    'captures':
-      '1':
-        'name': 'keyword.oo.k'
-  }
-  {
-    'name': 'keyword.root.k'
-    'match': '\\b(module|export|include|import|from|as)\\b'
-  }
-  {
-    'name': 'keyword.scope.k'
-    'match': '\\b(let|type|singleton|var|reset|set|do|nothing)\\b'
-  }
-  {
-    'name': 'keyword.function.k'
-    'match': '\\b(function|async|lambda|invoke|iterator|promise|observer|static|mock|handle)\\b'
-  }
-  {
-    'name': 'keyword.error.k'
-    'match': '\\b(throw|assert|finally|panic)\\b'
-  }
-  {
-    'name': 'keyword.misc.k'
-    'match': '\\b(where|when|match|tree|struct|fields|config|operator|guard|one|of|enum)\\b'
-  }
-  {
-    'name': 'keyword.oo.k'
-    'match': '\\b(class|private|interface)\\b'
-  }
-  {
-    'name': 'keyword.operator.k',
-    'match': '\\b(\\->|-->)\\b'
-  }
-  {
-    'name': 'constant.language.k'
-    'match': '\\b(true|false|Void|Nil|NotFound)\\b'
-  }
-  {
-    'match': ','
-    'name': 'punctuation.other.comma.go'
-  }
-  {
-    'match': '\\.(?![\\{\\[])'
-    'name': 'punctuation.other.period.go'
-  }
-  {
-    'match': ':'
-    'name': 'punctuation.other.colon.go'
+    'type': 'block'
   }
 ]
