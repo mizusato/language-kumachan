@@ -36,6 +36,7 @@
     "let",
     "rec",
     "|",
+    "~",
     ".",
     ";",
     ":",
@@ -61,11 +62,9 @@
   'callee > term > inline_ref > name': 'entity.name.function'
   'callee > term > inline_ref > module_prefix': 'entity.name.function'
   'lambda_header': 'entity.name.tag'
-  'pattern_trivial > name': 'variable.parameter'
-  'pattern_tuple > name': 'variable.parameter'
-  'pattern_bundle > name': 'variable.parameter'
   'field > name': 'entity.name.tag'
   'pair > name': 'entity.name.tag'
+  'cps > inline_ref > name': 'entity.name.function'
 'folds': [
   {
     'type': 'comment'
