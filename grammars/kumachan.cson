@@ -16,6 +16,7 @@
     "type",
     "union",
     "native",
+    "implicit",
     "as",
     "protected",
     "opaque",
