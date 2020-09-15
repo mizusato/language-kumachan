@@ -1,0 +1,4 @@
+'atom-text-editor[data-grammar~=\"kumachan\"]:not([mini])':
+  'shift-f6': 'kumachan:rename'
+  'shift-f7': 'kumachan:run-file'
+  'shift-f8': 'kumachan:run-project'

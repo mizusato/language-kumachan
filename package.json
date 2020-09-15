@@ -13,6 +13,35 @@
     "atom": "*"
   },
   "dependencies": {
+    "open-term": "^2.0.4",
     "tree-sitter-kumachan": "0.0.x"
-  }
+  },
+  "devDependencies": {
+    "@types/atom": "^1.40.4"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "4.0.0": "provideAutoComplete"
+      }
+    },
+    "code-highlight": {
+      "versions": {
+        "0.1.0": "provideHighlight"
+      }
+    },
+    "outline-view": {
+      "versions": {
+        "0.1.0": "provideOutline"
+      }
+    }
+  },
+  "consumedServices": {
+    "linter-indie": {
+      "versions": {
+        "2.0.0": "consumeLinter"
+      }
+    }
+  },
+  "main": "lib/lib"
 }
