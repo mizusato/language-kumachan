@@ -18,3 +18,4 @@ Key Bindings:
 Note:
 In order to enable "Autocomplete", "Lint on Save" and "Quick Run", the environment variable `KUMACHAN_PATH` should be set to the path of a directory containing built KumaChan interpreter binary and standard library code.
 
+
