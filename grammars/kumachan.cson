@@ -14,7 +14,7 @@
     "import",
     "from",
     "type",
-    "union",
+    "enum",
     "native",
     "implicit",
     "weak",
