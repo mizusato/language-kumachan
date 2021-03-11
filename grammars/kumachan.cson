@@ -20,11 +20,9 @@
     "weak",
     "protected",
     "opaque",
-    "private",
-    "public",
+    "export",
     "function",
     "const",
-    "macro",
     "do",
     "switch",
     "select",
@@ -36,14 +34,12 @@
     "else",
     "let",
     "rec",
-    "|",
-    "~",
     ".",
     ";",
     ":",
     ":="
   ''': 'keyword.control'
-  '"(", ")", "[", "]"': 'entity.name.tag'
+  '"(", ")", "[", "]", "&", "=>"': 'entity.name.tag'
   'comment': 'comment.block'
   'string_text': 'string.quoted.single'
   'formatter_text': 'string.quoted.double'
@@ -52,22 +48,20 @@
   'char': 'constant.character'
   'decl_const > name': 'constant.other'
   'decl_func > name': 'entity.name.function'
-  'decl_macro > name': 'entity.name.function'
   'decl_type > name': 'entity.name.type'
-  'infix > operator': 'entity.name.function'
-  'infix > "$"': 'entity.name.tag'
   'type_ref > name': 'entity.name.type'
   'type_ref > module_prefix': 'entity.name.type'
   'type_param > name': 'entity.name.type'
   'type_bound > "<"': 'entity.name.tag'
   'type_bound > ">"': 'entity.name.tag'
-  'pipeline > pipe_func': 'entity.name.function'
-  'callee > term > inline_ref > name': 'entity.name.function'
-  'callee > term > inline_ref > module_prefix': 'entity.name.function'
-  'lambda_header': 'entity.name.tag'
   'field > name': 'entity.name.tag'
   'pair > name': 'entity.name.tag'
+  'callee > expr > term > inline_ref > name': 'entity.name.function'
+  'callee > expr > term > inline_ref > module_prefix': 'entity.name.function'
+  'operator > expr > term > inline_ref > name': 'entity.name.function'
+  'operator > expr > term > inline_ref > module_prefix': 'entity.name.function'
   'cps > inline_ref > name': 'entity.name.function'
+  'cps > inline_ref > module_prefix': 'entity.name.function'
 'folds': [
   {
     'type': 'comment'
@@ -82,18 +76,34 @@
     'type': 'decl_func'
   }
   {
-    'type': 'decl_macro'
+    'type': 'call_prefix'
   }
   {
-    'type': 'multi_switch'
+    'type': 'cps'
   }
   {
-    'type': 'switch'
+    'type': 'lambda'
+  }
+  {
+    'type': 'block'
   }
   {
     'type': 'if'
   }
   {
-    'type': 'block'
+    'type': 'switch'
+  }
+  {
+    'type': 'multi_switch'
+  }
+  {
+    'type': 'array'
+  }
+  {
+    'type': 'tuple'
+  }
+  {
+    'type': 'bundle'
   }
 ]
+
