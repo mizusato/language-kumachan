@@ -37,7 +37,8 @@
     ".",
     ";",
     ":",
-    ":="
+    ":=",
+    "|"
   ''': 'keyword.control'
   '"(", ")", "[", "]", "{", "}", "&", "=>"': 'entity.name.tag'
   'comment': 'comment.block'
