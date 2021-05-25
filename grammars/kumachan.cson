@@ -57,6 +57,8 @@
   'type_bound > ">"': 'entity.name.tag'
   'field > name': 'entity.name.tag'
   'pair > name': 'entity.name.tag'
+  'pipe_get > name': 'entity.name.tag'
+  'pipe_field_ref > name': 'entity.name.tag'
   'callee > expr > term > inline_ref > name': 'entity.name.function'
   'callee > expr > term > inline_ref > module_prefix': 'entity.name.function'
   'operator > expr > term > inline_ref > name': 'entity.name.function'
