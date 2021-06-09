@@ -63,8 +63,6 @@
   'callee > expr > term > inline_ref > module_prefix': 'entity.name.function'
   'operator > expr > term > inline_ref > name': 'entity.name.function'
   'operator > expr > term > inline_ref > module_prefix': 'entity.name.function'
-  'cps > inline_ref > name': 'entity.name.function'
-  'cps > inline_ref > module_prefix': 'entity.name.function'
 'folds': [
   {
     'type': 'comment'
